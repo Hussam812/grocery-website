@@ -28,20 +28,24 @@ document.getElementById("login-btn").onclick = () =>{
 function showbox(classBox, btn){
     const removeBoxes = [".shopping-cart", ".login-form",".navbar", ".search-form"];
     let targetbox = document.querySelector(classBox);
-    
+   
+
+   
     document.getElementById(btn).onclick = () =>{
 
         removeBoxes.forEach(x =>{
-           
-            document.querySelector(x).classList.remove("active");
-        })
-        
+           if (x !== classBox){
+            document.querySelector(x).className = x.replace(".", "");
+           }
+        }); 
+
         targetbox.classList.toggle("active");
         window.onscroll = () =>{
             targetbox.classList.remove("active");
         };
     };
-   
+
+    
 
 };
 
@@ -49,3 +53,48 @@ showbox(".search-form", "search-btn");
 showbox(".shopping-cart", "cart-btn");
 showbox(".login-form", "login-btn");
 showbox(".navbar", "menu-btn");
+
+
+var swiper = new Swiper(".product-slider", {
+    loop:true,
+    spaceBetween: 20,
+    autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
+    },
+    centeredSlides: true,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1020: {
+        slidesPerView: 3,
+      },
+    },
+});
+
+
+
+var swiperview = new Swiper(".review-slider", {
+    loop:true,
+    spaceBetween: 20,
+    autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
+    },
+    centeredSlides: true,
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1020: {
+        slidesPerView: 3,
+      },
+    },
+});
